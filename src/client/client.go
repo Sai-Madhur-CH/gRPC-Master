@@ -1,4 +1,4 @@
-package main
+package client
 
 import (
 	"context"
@@ -11,7 +11,8 @@ import (
 	"github.com/Sai-Madhur-CH/gRPC-Master/src/chatpb"
 )
 
-func main() {
+// Run -
+func Run() {
 	fmt.Println("Chat Client Initiated...")
 
 	cc, err := grpc.Dial("localhost:50051", grpc.WithInsecure())

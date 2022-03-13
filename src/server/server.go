@@ -1,7 +1,6 @@
-package main
+package server
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net"
@@ -9,26 +8,24 @@ import (
 	"os/signal"
 
 	"google.golang.org/grpc"
+	"gorm.io/gorm"
 
 	"github.com/Sai-Madhur-CH/gRPC-Master/src/chatpb"
+	"github.com/Sai-Madhur-CH/gRPC-Master/src/chatservice"
+	"github.com/Sai-Madhur-CH/gRPC-Master/util"
 )
 
-type server struct {
-}
+var db *gorm.DB
 
-func (s *server) Send(c context.Context, req *chatpb.ChatRequest) (*chatpb.ChatResponse, error) {
-	fmt.Printf("Send Function us invoked with :%v \n", req)
-	msg := req.GetReq()
-	res := &chatpb.ChatResponse{Res: msg}
-	return res, nil
-}
-
-func main() {
+// Run - start the gRPC Server
+func Run() {
 	// In case of run time errors show file name and line number in the code
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	fmt.Println("Initiated Chat Server:")
 
+	// DB Connection
+	db = util.Connect()
 	// TCP listener
 	listner, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
@@ -39,7 +36,7 @@ func main() {
 	s := grpc.NewServer()
 
 	// Register the service
-	chatpb.RegisterChatServiceServer(s, &server{})
+	RegisterServices(s)
 
 	// gRPC Serving
 	go func() {
@@ -63,4 +60,9 @@ func main() {
 	listner.Close()
 
 	fmt.Println("Server is Down.")
+}
+
+// RegisterServices - Register Existing Services
+func RegisterServices(s *grpc.Server) {
+	chatpb.RegisterChatServiceServer(s, &chatservice.Server{})
 }

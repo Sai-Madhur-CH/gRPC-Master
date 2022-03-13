@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"github.com/Sai-Madhur-CH/gRPC-Master/src/client"
+	"github.com/Sai-Madhur-CH/gRPC-Master/src/server"
+)
 
 func main() {
-	fmt.Println("$$$$$")
+	server.Run()
+	client.Run()
 }
