@@ -5,6 +5,9 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
+
+	"github.com/Sai-Madhur-CH/gRPC-Master/models"
 )
 
 var db *gorm.DB
@@ -16,12 +19,21 @@ func Connect() *gorm.DB {
 	db, e = gorm.Open(postgres.New(postgres.Config{
 		DSN:                  dbPath,
 		PreferSimpleProtocol: true, // disables implicit prepared statement usage
-	}), &gorm.Config{})
+	}), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info),
+	})
 
 	if e != nil {
 		panic("failed to connect to database")
 	}
+
 	fmt.Println("DB Connected...")
-	// db.AutoMigrate(&models.BasketballPlayer{})
+	autoMigrate()
 	return db
+}
+
+func autoMigrate() {
+	fmt.Print("Started Auto-Migrations...")
+	db.AutoMigrate(&models.User{})
+	fmt.Print("Done with Auto-Migrations.")
 }

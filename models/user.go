@@ -12,7 +12,7 @@ type Default struct {
 
 // User struct
 type User struct {
-	ID           string `json:"id,omitempty" gorm:"type:primary_key"`
+	ID           string `json:"id,omitempty" gorm:"primaryKey"`
 	Name         string `json:"name,omitempty" gorm:"type:varchar;not null;"`
 	Email        string `json:"email,imitempty" gorm:"type:varchar;not null;"`
 	Phone        string `json:"phone,imitempty" gorm:"type:varchar;not null;"`
