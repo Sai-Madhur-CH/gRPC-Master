@@ -16,7 +16,7 @@ type server struct {
 }
 
 func main() {
-	// In case of run time errors show file name and linenumbe in the code
+	// In case of run time errors show file name and line number in the code
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	fmt.Println("Initiated Chat Server:")
