@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
@@ -13,6 +14,13 @@ import (
 )
 
 type server struct {
+}
+
+func (s *server) Send(c context.Context, req *chatpb.ChatRequest) (*chatpb.ChatResponse, error) {
+	fmt.Printf("Send Function us invoked with :%v \n", req)
+	msg := req.GetReq()
+	res := &chatpb.ChatResponse{Res: msg}
+	return res, nil
 }
 
 func main() {

@@ -12,6 +12,14 @@ message Msg{
     string date = 5;
 }
 
-service ChatService {
+message chatRequest{
+    Msg req = 1;
+}
 
+message chatResponse{
+    Msg res = 1;
+}
+
+service ChatService {
+    rpc Send(chatRequest) returns (chatResponse) {};
 }
