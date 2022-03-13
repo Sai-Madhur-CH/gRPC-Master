@@ -4,7 +4,7 @@ Sai Learning gRPC Basics and Implementing Proto Buffers, gRPC-go Framework, prot
 
 1. Need to Install Protobuf package in the machine
 2. Write Protocal Buffer file
-3. Auto Generate the code usinf Protocal Buffers use ./sh/generate.sh (check for the relative path in the code base)
+3. Auto Generate the code using Protocal Buffers use ./sh/generate.sh (check for the relative path in the code base)
 4. Create the Server.
 5. Using GORM to interact with the database.
 6. Used Unary, Server Streaming so far 
