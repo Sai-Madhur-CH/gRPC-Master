@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package chat;
 
-option go_package = "./src/chatpb";
+option go_package = "/proto/chatpb";
 
 message Msg{
     string id = 1;
