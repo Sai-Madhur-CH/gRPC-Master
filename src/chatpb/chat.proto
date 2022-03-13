@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "./src/chatpb";
+
+message Msg{
+    string id = 1;
+    string from_user_id = 2;
+    string to_user_id = 3;
+    string msg = 4;
+    string date = 5;
+}
+
+service ChatService {
+
+}
