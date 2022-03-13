@@ -34,6 +34,11 @@ func Connect() *gorm.DB {
 
 func autoMigrate() {
 	fmt.Print("Started Auto-Migrations...")
+	createSchema("dbo")
 	db.AutoMigrate(&models.User{})
 	fmt.Print("Done with Auto-Migrations.")
+}
+
+func createSchema(schema string) {
+	db.Exec(`CREATE SCHEMA IF NOT EXISTS ` + schema)
 }

@@ -19,3 +19,8 @@ type User struct {
 	HashPassword string `json:"hash_password,imitempty" gorm:"type:varchar;not null;"`
 	Default
 }
+
+// TableName - to set schema
+func (u *User) TableName() string {
+	return "dbo.users"
+}
