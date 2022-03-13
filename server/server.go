@@ -10,8 +10,7 @@ import (
 	"google.golang.org/grpc"
 	"gorm.io/gorm"
 
-	"github.com/Sai-Madhur-CH/gRPC-Master/src/chatpb"
-	"github.com/Sai-Madhur-CH/gRPC-Master/src/chatservice"
+	"github.com/Sai-Madhur-CH/gRPC-Master/proto/chatpb"
 	"github.com/Sai-Madhur-CH/gRPC-Master/util"
 )
 
@@ -64,5 +63,5 @@ func Run() {
 
 // RegisterServices - Register Existing Services
 func RegisterServices(s *grpc.Server) {
-	chatpb.RegisterChatServiceServer(s, &chatservice.Server{})
+	chatpb.RegisterChatServiceServer(s, &ChatServer{})
 }

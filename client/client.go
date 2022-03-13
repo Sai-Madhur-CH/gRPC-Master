@@ -8,10 +8,10 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/Sai-Madhur-CH/gRPC-Master/src/chatpb"
+	"github.com/Sai-Madhur-CH/gRPC-Master/proto/chatpb"
 )
 
-// Run -
+// Run - Just for test
 func Run() {
 	fmt.Println("Chat Client Initiated...")
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/Sai-Madhur-CH/gRPC-Master/src/client"
-	"github.com/Sai-Madhur-CH/gRPC-Master/src/server"
+	"github.com/Sai-Madhur-CH/gRPC-Master/client"
+	"github.com/Sai-Madhur-CH/gRPC-Master/server"
 )
 
 func main() {
